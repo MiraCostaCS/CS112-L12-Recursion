@@ -1,32 +1,29 @@
-## 📋 Project Assessment: Lab 05 - PokémonBox + Exceptions
+## 📋 Project Assessment: Lab #12 - Recursion
 
-### 1. Git & Workflow
-- [ ] **Commit Messages:** Descriptive and incremental (e.g., "Defined custom PokemonAlreadyExistsException" or "Implemented try-catch in Main menu").
+### 1. Development & Workflow
+- [ ] **Commit Messages:** Descriptive and incremental commits tracking recursive algorithm design, base case handling, and testing.
 
-### 2. Functional Requirements
-- [ ] **Pokemon (Model Class):**
-    - [ ] **Constructors Upgrade:** Replaced `System.exit()` or shutdown logic with `throw new IllegalArgumentException("Message")` for invalid data in all constructors
-- [ ] **`PokemonAlreadyExistsException` (Custom Exception):**
-    - [ ] **Definition:** New class created that `extends Exception`
-    - [ ] **Constructors:**
-      - [ ] Includes a default constructor with default error message.
-      - [ ] Includes a message-based constructor to pass specific error details.
-- [ ] **PokemonBox (Container Class):**
-    - [ ] **Constructor Upgrade:** Throws `IllegalArgumentException` if initial parameters (like capacity) are invalid.
-    - [ ] **getPokemon(int location):** Throws `IndexOutOfBoundsException` if the location is outside the valid array range.
-    - [ ] **add(Pokemon p):**
-        - [ ] Scans the current array for a Pokémon with the same name (or uses `hasPokemon()` method).
-        - [ ] Throws `PokemonAlreadyExistsException` if a match is found, preventing the duplicate from being added.
-- [ ] **Driver Program (Main.java):**
-    - [ ] **InputMismatchException:** Uses `try-catch` within the menu to catch non-integer inputs, clears the scanner buffer, and allows the user to try again.
-      - [ ] Pay close attention to the Scanner's buffer when catching `InputMismatchException`—if you don't clear the "bad" input with a `nextLine()`, you might end up in an infinite loop!
-    - [ ] **IllegalArgumentException:** Catches invalid Pokémon data during creation and prompts the user for corrected values without crashing.
-    - [ ] **PokemonAlreadyExistsException:** Specifically catches the custom exception; displays a message regarding regional sustainability and habitat loss before returning to the menu.
+### 2. Functional Requirements (Recursive Algorithm)
+
+#### Method Signature & Setup
+- [ ] **Header Definition:** Method defined in `Main.java` with signature accepting `amount` (double), `rate` (double), and `years` (int), returning a double.
+
+#### Base Case Implementation
+- [ ] **Stop Condition:** Correctly checks designed stop condition.
+- [ ] **Base Return:** Returns the current `amount` without performing further calculations when the base case is reached.
+
+#### Recursive Step Implementation
+- [ ] **Compound Calculation:** Calculates `newBalance` for the current year.
+- [ ] **Recursive Invocation:** Makes a self-referential call passing new arguments.
+- [ ] **Convergence:** Ensures control variable changes toward stop condition on every invocation to prevent infinite recursion and stack overflow errors.
+
+#### Program Integration & Testing
+- [ ] **Main Integration:** Uncommented driver code print statements in `main()` to test the recursive method.
+- [ ] **Mathematical Verification:** Verified output accuracy against test cases:
+    - [ ] `recursiveInterestCalc(7000, 0.07, 5)` yields $9817.86
+    - [ ] `recursiveInterestCalc(5000, 0.04, 13)` yields $8325.37
+- [ ] **Iterative Comparison:** Verified that recursive output matches the existing iterative method results.
 
 ### 3. Code Quality & Standards
-- [ ] **Exception Handling:**
-    - [ ] `try-catch` blocks are scoped narrowly (not wrapping the entire program).
-    - [ ] Specific exceptions are caught before more general ones (e.g., catching `InputMismatchException` specifically, not catching all with `Exception`).
-- [ ] **Naming & Formatting:** `PokemonAlreadyExistsException` follows standard Java exception naming conventions.
-- [ ] **Robustness:** The program remains running even after an exception is triggered (the "Lather, Rinse, Repeat" approach to user errors).
-- [ ] **Documentation:** JavaDoc present for all methods. Custom exception and logic changes are clearly documented.
+- [ ] **Recursion Logic:** Clear separation between base case and recursive step without redundant checks.
+- [ ] **Formatting & Style:** Proper indentation, clear variable naming, and inclusion of method-level comments.
